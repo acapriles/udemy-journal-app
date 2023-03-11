@@ -26,7 +26,7 @@ export const LoginPage = () => {
 	const onSubmit = ( event ) => {
 		event.preventDefault();
 
-		// console.log(formState);
+		console.log(formState);
 		if (password.length < 1) return;
 		
 		dispatch( startLoginWithEmailPassword({ email, password }) );
@@ -60,6 +60,9 @@ export const LoginPage = () => {
 					<Grid item xs={12} sx={{ mt: 2 }}>
 						<TextField 
 							label="Password"
+							inputProps={{
+								'data-testid': 'password'
+							}}
 							type="password"
 							placeholder="********"
 							fullWidth
@@ -84,6 +87,7 @@ export const LoginPage = () => {
 						<Grid item xs={ 12 } sm={ 6 }>
 							<Button 
 								type='submit' 
+								aria-label='submit-form'
 								variant="contained" 
 								fullWidth
 								disabled={ isAuthentication }
@@ -95,6 +99,7 @@ export const LoginPage = () => {
 						<Grid item xs={ 12 } sm={ 6 }>
 							<Button 
 								variant="contained" 
+								aria-label='google-btn'
 								fullWidth
 								onClick={ onGoogleSignIn }
 								disabled={ isAuthentication }
